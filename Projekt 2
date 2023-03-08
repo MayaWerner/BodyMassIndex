@@ -1,0 +1,124 @@
+using System;
+namespace BodyMassIndex
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string Input = "";
+            double height;
+            double weight;
+            double normalWeight;
+            double perfectWeightWoman;
+            double perfectWeightMan;
+            Console.WriteLine("Dieses Programm ermittelt ob Sie unter, über oder zwischen dem Normalgewicht und Idealgewicht liegen.");
+            Console.WriteLine("Dafür wird Ihre Größe und Ihr Gewicht benötigt.");
+            Console.WriteLine("Drücken Sie Enter um zu beginnen");
+            Console.WriteLine("Geben Sie 'beenden' ein, um das Program zu schließen.");
+            Input = Console.ReadLine();
+            Console.Clear();
+
+            while (Input.ToLower() != "beenden")
+            {
+                Console.WriteLine("Bitte geben Sie Ihre Größe an:");
+                Input = Console.ReadLine();
+                double.TryParse(Input, out height);
+                Console.Clear();
+
+                if (height <= 0)
+                {
+                    Console.WriteLine("Die Eingabe ist ungueltig.");
+                    Console.WriteLine("Bitte geben Sie einen richtigen Wert an.");
+                    Input = Console.ReadLine();
+                    double.TryParse(Input, out height);
+                    Console.Clear();
+                }
+
+                Console.WriteLine("Bitte geben Sie Ihr Gewicht an:");
+                Input = Console.ReadLine();
+                double.TryParse(Input, out weight);
+                Console.Clear();
+
+                if (weight <= 0)
+                {
+                    Console.WriteLine("Die Eingabe ist ungueltig.");
+                    Console.WriteLine("Bitte geben Sie einen richtigen Wert an.");
+                    Input = Console.ReadLine();
+                    double.TryParse(Input, out weight);
+                    Console.Clear();
+                }
+
+                normalWeight = height - 100;
+                perfectWeightMan = normalWeight * 0.90;
+                perfectWeightWoman = normalWeight * 0.85;
+
+                Console.WriteLine("Bitte geben Sie Ihr Geschlecht an (m oder w):");
+                Input = Console.ReadLine();
+                Console.Clear();
+
+                if (Input.ToLower() == "m")
+                {
+                    if (weight < perfectWeightMan)
+                    {
+                        Console.WriteLine("Ihr Gewicht ist unter dem Normalen- und Idealgewicht.");
+                        Console.WriteLine("Drücken Sie Enter um erneut zu beginnen.");
+                        Console.ReadLine();
+                        Console.Clear();
+                    }
+
+                    if (perfectWeightMan <= weight && normalWeight >= weight)
+                    {
+                        Console.WriteLine("Ihr Gewicht ist zwischen dem Normalen- und Idealgewicht.");
+                        Console.WriteLine("Drücken Sie Enter um erneut zu beginnen.");
+                        Console.ReadLine();
+                        Console.Clear();
+                    }
+
+                    if (weight > normalWeight)
+                    {
+                        Console.WriteLine("Ihr Gewicht ist über dem Normalen- und Idealgewicht.");
+                        Console.WriteLine("Drücken Sie Enter um erneut zu beginnen.");
+                        Console.ReadLine();
+                        Console.Clear();
+                    }
+                }
+
+
+                if (Input.ToLower() == "w")
+                {
+                    if (weight < perfectWeightWoman)
+                    {
+                        Console.WriteLine("Ihr Gewicht ist unter dem Normalen- und Idealgewicht.");
+                        Console.WriteLine("Drücken Sie Enter um erneut zu beginnen.");
+                        Console.ReadLine();
+                        Console.Clear();
+                    }
+
+                    if (perfectWeightWoman <= weight && normalWeight >= weight)
+                    {
+                        Console.WriteLine("Ihr Gewicht ist zwischen dem Normalen- und Idealgewicht.");
+                        Console.WriteLine("Drücken Sie Enter um erneut zu beginnen.");
+                        Console.ReadLine();
+                        Console.Clear();
+                    }
+
+                    if (weight > normalWeight)
+                    {
+                        Console.WriteLine("Ihr Gewicht ist über dem Normalen- und Idealgewicht.");
+                        Console.WriteLine("Drücken Sie Enter um erneut zu beginnen.");
+                        Console.ReadLine();
+                        Console.Clear();
+                    }
+                }
+
+                else
+                {
+                    Console.WriteLine("Die Eingabe ist ungueltig.");
+                    Console.WriteLine("Bitte geben Sie einen richtigen Wert an.");
+                    Input = Console.ReadLine();
+                    Console.Clear();
+                }
+            }
+        }
+    }
+}
